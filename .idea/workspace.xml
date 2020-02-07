@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="00f6e972-2f6e-4260-a2fc-b84a7bb139b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +26,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="224" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/SIRW/apache-jena-3.13.0/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Taller 4/Taller 4" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -75,7 +75,7 @@
       <updated>1580863656578</updated>
       <workItem from="1580863659311" duration="3722000" />
       <workItem from="1581021650305" duration="55000" />
-      <workItem from="1581116481722" duration="398000" />
+      <workItem from="1581116481722" duration="3262000" />
     </task>
     <servers />
   </component>
