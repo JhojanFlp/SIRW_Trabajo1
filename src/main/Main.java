@@ -8,11 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Iterator;
 
 // Librerías de Jena
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
+import org.apache.jena.reasoner.ValidityReport;
 import org.apache.jena.util.FileManager;
 
 public class Main {
@@ -37,6 +39,24 @@ public class Main {
         // Create Model
         Model model = ModelFactory.createDefaultModel() ;
         model.read("Libros.ttl") ;
+
+        //razonador
+        Reasoner OWLReasoner = ReasonerRegistry.getOWLReasoner();
+        InfModel OWLinfe = ModelFactory.createInfModel(OWLReasoner,model);
+
+        //validation
+        ValidityReport validity = OWLinfe.validate();
+        if (validity.isValid()) {
+            System.out.println("OK");
+        } else {
+            System.out.println("Errores: ");
+            for (Iterator i = validity.getReports(); i.hasNext(); ) {
+                System.out.println(" - " + i.next());
+            }
+        }
+
+
+        //OWLinfe.write(System.out);
 
         // Print Tripletas
         // for(StmtIterator i = data.listStatements(); i.hasNext();) {
