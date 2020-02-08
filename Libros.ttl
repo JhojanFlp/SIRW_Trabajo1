@@ -1,0 +1,140 @@
+@prefix book: <http://book.org/> .
+@prefix book1: <http://book1.org/#> .
+@prefix vocab: <http://35.208.107.33:2020/resource/vocab/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://book.org/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://book.org/Distribuido_Por
+book:Distribuido_Por rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty book1:Distribuido_Por.
+
+
+###  http://book.org/Distribuidor_De
+book:Distribuidor_De rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty book1:Distribuyo.
+
+
+###  http://book.org/Escrito_Por
+book:Escrito_Por rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty book1:Escrito_Por.
+
+
+###  http://book.org/Escritor_De
+book:Escritor_De rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty book1:Escribio.
+
+
+###  http://book.org/Publicado_Por
+book:Publicado_Por rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty book1:Publicado_Por.
+
+
+###  http://book.org/Publicador_De
+book:Publicador_De rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty book1:Publico.
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://book.org/Anno_Fundacion
+book:Anno_Fundacion rdf:type owl:DatatypeProperty ;
+                rdfs:domain book:Editorial ;
+                rdfs:range xsd:int ;
+                owl:equivalentProperty book1:AñoFundacion.
+
+
+###  http://book.org/Anno_Nacimiento
+book:Anno_Nacimiento rdf:type owl:DatatypeProperty ;
+                 rdfs:domain book:Persona ;
+                 rdfs:range xsd:int ;
+                  owl:equivalentProperty book1:AñoNacimiento.
+
+
+###  http://book.org/Anno_Publicacion
+book:Anno_Publicacion rdf:type owl:DatatypeProperty ;
+                  rdfs:domain book:Book ,
+                              book:Libro ;
+                  rdfs:range xsd:int ;
+                  owl:equivalentProperty book1:AñoPublicacion.
+
+
+###  http://book.org/Genero
+book:Genero rdf:type owl:DatatypeProperty ;
+        rdfs:domain book:Book ,
+                    book:Libro ;
+        rdfs:range xsd:string ;
+      owl:equivalentProperty book1:Genero.
+
+
+###  http://book.org/Nacionalidad
+book:Nacionalidad rdf:type owl:DatatypeProperty ;
+              rdfs:domain book:Persona ;
+              rdfs:range xsd:string ;
+                owl:equivalentProperty book1:Nacionalidad.
+
+
+###  http://book.org/Pais
+book:Pais rdf:type owl:DatatypeProperty ;
+      rdfs:domain book:Distribuidora ;
+      rdfs:range xsd:string ;
+                owl:equivalentProperty book1:Pais.
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://book.org/Autor
+book:Autor rdf:type owl:Class ;
+       owl:equivalentClass book:Escritor ,
+                           book:Writer ,
+                           book1:Autor ;
+       rdfs:subClassOf :Persona .
+
+
+###  http://book.org/Book
+book:Book rdf:type owl:Class ;
+      owl:equivalentClass book:Libro ,
+                          book1:Libro .
+
+
+###  http://book.org/Distribuidora
+book:Distribuidora rdf:type owl:Class ;
+      owl:equivalentClass book1:Distribuidora.
+
+
+###  http://book.org/Editorial
+book:Editorial rdf:type owl:Class ;
+      owl:equivalentClass book1:Editorial.
+
+
+###  http://book.org/Escritor
+book:Escritor rdf:type owl:Class ;
+          owl:equivalentClass book:Writer ;
+          rdfs:subClassOf book:Persona .
+
+
+###  http://book.org/Libro
+book:Libro rdf:type owl:Class .
+
+
+###  http://book.org/Persona
+book:Persona rdf:type owl:Class ;
+      owl:equivalentClass book1:Persona.
+
+
+###  http://book.org/Writer
+book:Writer rdf:type owl:Class ;
+        rdfs:subClassOf book:Persona .
+

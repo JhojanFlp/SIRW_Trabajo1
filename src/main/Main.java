@@ -35,8 +35,8 @@ public class Main {
         });
 
         // Create Model
-        Model data = FileManager.get().loadModel("Robots.owl");
-        InfModel infmodel = ModelFactory.createRDFSModel(data);
+        Model model = ModelFactory.createDefaultModel() ;
+        model.read("Libros.ttl") ;
 
         // Print Tripletas
         // for(StmtIterator i = data.listStatements(); i.hasNext();) {
