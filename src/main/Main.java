@@ -10,9 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 // Librerías de Jena
-import org.apache.jena.rdf.model.InfModel;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
 import org.apache.jena.util.FileManager;
@@ -37,8 +35,14 @@ public class Main {
         });
 
         // Create Model
-        // Model data = FileManager.get().loadModel("ModelIntegration.owl");
-        // InfModel infmodel = ModelFactory.createRDFSModel(data);
+        Model data = FileManager.get().loadModel("Robots.owl");
+        InfModel infmodel = ModelFactory.createRDFSModel(data);
+
+        // Print Tripletas
+        // for(StmtIterator i = data.listStatements(); i.hasNext();) {
+        //     Statement statement = i.nextStatement();
+        //    System.out.println(statement.getSubject() + " " + statement.getPredicate() + " " + statement.getObject());
+        // }
 
         // Entities
 
