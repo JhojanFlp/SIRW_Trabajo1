@@ -1,15 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="00f6e972-2f6e-4260-a2fc-b84a7bb139b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Libros.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Robots.owl" afterDir="false" />
+    <list default="true" id="00f6e972-2f6e-4260-a2fc-b84a7bb139b1" name="Default Changelist" comment="agregado jena al repo y fix de la ontologia de intefgracion">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/NOTICE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/arq.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/infer.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/iri.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/juuid.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/nquads.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/ntriples.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/qparse.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rdfcat.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rdfcompare.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rdfcopy.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rdfdiff.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rdfparse.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rdfxml.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/riot.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rset.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rsparql.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/rupdate.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/schemagen.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/shacl.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/sparql.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbbackup.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbcompact.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbdump.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbloader.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbquery.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbstats.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdb2_tdbupdate.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdbbackup.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdbdump.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdbloader.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdbquery.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdbstats.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/tdbupdate.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/trig.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/turtle.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/uparse.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/update.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/utf8.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/wwwdec.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bat/wwwenc.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/arq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/infer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/iri" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/jena" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/juuid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/nquads" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/ntriples" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/qparse" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rdfcat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rdfcompare" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rdfcopy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rdfdiff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rdfparse" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rdfxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/riot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rsparql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/rupdate" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/schemagen" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/shacl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/sparql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbbackup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbcompact" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbdump" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbloader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbquery" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbstats" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdb2.tdbupdate" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbbackup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbdump" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbloader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbloader2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbloader2common" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbloader2data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbloader2index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbquery" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbstats" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/tdbupdate" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/trig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/turtle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/uparse" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/update" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/utf8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/wwwdec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/bin/wwwenc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/jena-log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib-src/jena-arq-3.14.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib-src/jena-cmds-3.14.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib-src/jena-core-3.14.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib-src/jena-rdfconnection-3.14.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib-src/jena-shacl-3.14.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib-src/jena-tdb-3.14.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/collection-0.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/commons-cli-1.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/commons-codec-1.13.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/commons-compress-1.19.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/commons-csv-1.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/commons-io-2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/commons-lang3-3.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/httpclient-4.5.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/httpclient-cache-4.5.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/httpcore-4.4.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jackson-annotations-2.10.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jackson-core-2.10.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jackson-databind-2.10.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/javax.annotation-api-1.3.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jcl-over-slf4j-1.7.26.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-arq-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-base-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-cmds-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-core-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-dboe-base-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-dboe-index-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-dboe-storage-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-dboe-trans-data-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-dboe-transaction-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-iri-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-rdfconnection-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-shacl-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-shaded-guava-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-tdb-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jena-tdb2-3.14.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/jsonld-java-0.12.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/libthrift-0.13.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/log4j-1.2.17.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/slf4j-api-1.7.26.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/lib/slf4j-log4j12-1.7.26.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/AlgebraEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/AlgebraExec.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExProg1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExProg2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExQuerySelect1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExQuerySelect2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExampleDBpedia1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExampleDBpedia2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/ExampleDBpedia3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/aggregates/CustomAggregate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/bgpmatching/OpExecutorAlt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/bgpmatching/StageAltMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/bgpmatching/StageGeneratorAlt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/constructquads/ExampleConstructQuads.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/engine/MyQueryEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/filter/classify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/propertyfunction/labelSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/propertyfunction/localname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/propertyfunction/uppercase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT1_ReadModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT2_ReadDataset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT3_RDFParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT4_StreamRDF_Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT5_StreamRDFCollect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT6_AddNewReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT7_ParserPiped.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT_RDFXML_ReaderProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOT_RDFXML_WriteProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOTw1_writeModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOTw2_writeRDF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/ExRIOTw3_AddNewWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/riot/Ex_WriteJsonLD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/update/UpdateExecuteOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/update/UpdateProgrammatic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/arq/examples/update/UpdateReadFromFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/data/camera.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/data/eswc-2006-09-21.rdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/data/test1.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/data/test2.owl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/bin/get-data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/java/org/apache/jena/example/Base.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/java/org/apache/jena/example/CheeseBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/java/org/apache/jena/example/helloworld/HelloWorld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/java/org/apache/jena/example/pizza/PizzaSparqlNoInf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/java/org/apache/jena/example/streaming/StreamRDFToConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/resources/data/cheeses-0.1.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/resources/data/pizza.owl.rdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/main/resources/ontologies/cheese.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena-examples/src/test/java/org/apache/jena_examples/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/ontology/classHierarchy/ClassHierarchy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/ontology/classHierarchy/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/ontology/describeClass/DescribeClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/ontology/describeClass/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial04.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial06.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial07.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial08.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial09.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/jena/examples/rdf/Tutorial11.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExQuadFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB_Txn1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB_Txn2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-jena-3.14.0/src-examples/tdb/examples/ExTDB_Txn3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Jena.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Jena.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Trabajo1/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Trabajo1/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libros.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/Libros.ttl" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +230,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="victorcatn" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XMl4wrnyO3MAR7osVJfYvFNTHj" />
@@ -37,28 +251,16 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="224" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Taller 4/Taller 4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/apache-jena-3.14.0/lib" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Asus\Desktop\Trabajo1\src" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -117,5 +319,57 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="agregado jena al repo y fix de la ontologia de intefgracion" />
+    <option name="LAST_COMMIT_MESSAGE" value="agregado jena al repo y fix de la ontologia de intefgracion" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="181" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581195098004">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="181" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1581195098004" />
+    <state x="720" y="329" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581196123820">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="720" y="329" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1581196123820" />
+    <state x="808" y="415" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1581195036787">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="808" y="415" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1581195036787" />
+    <state x="790" y="236" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1581195176146">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="790" y="236" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1581195176146" />
+    <state x="585" y="120" key="CommitChangelistDialog2" timestamp="1581196739319">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="585" y="120" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1581196739319" />
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1581196128485">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1581196128485" />
+    <state x="666" y="266" key="FileChooserDialogImpl" timestamp="1581195152665">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="666" y="266" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1581195152665" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1581195541021">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1581195541021" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1581195541021">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1581195541021" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1581195541021">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1581195541021" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1581195541021">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1581195541021" />
+    <state x="440" y="100" key="SettingsEditor" timestamp="1581195835258">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="440" y="100" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1581195835258" />
   </component>
 </project>

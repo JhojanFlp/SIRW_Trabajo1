@@ -100,7 +100,7 @@ book:Autor rdf:type owl:Class ;
        owl:equivalentClass book:Escritor ,
                            book:Writer ,
                            book1:Autor ;
-       rdfs:subClassOf :Persona .
+       rdfs:subClassOf book:Persona .
 
 
 ###  http://book.org/Book
