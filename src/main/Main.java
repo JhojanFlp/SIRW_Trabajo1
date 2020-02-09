@@ -34,15 +34,9 @@ public class Main {
             }
         });
 
-        // Create Model
+        // Create Model Integration
         Model model = ModelFactory.createDefaultModel() ;
         model.read("Libros.ttl") ;
-
-        // Print Tripletas
-        // for(StmtIterator i = data.listStatements(); i.hasNext();) {
-        //     Statement statement = i.nextStatement();
-        //    System.out.println(statement.getSubject() + " " + statement.getPredicate() + " " + statement.getObject());
-        // }
 
         // Entities
 
