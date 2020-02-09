@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.util.Iterator;
 
 // Librerías de Jena
+import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
@@ -22,7 +23,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException{
 
         // GUI
-        SwingUtilities.invokeLater(new Runnable() {
+        /*SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 JFrame frame = new Panel();
@@ -34,7 +35,7 @@ public class Main {
                 //Fill to CB Instance
                 String[] instances = {"libro", "autor"};
             }
-        });
+        });*/
 
         // Create Model
         Model model = ModelFactory.createDefaultModel() ;
@@ -55,6 +56,42 @@ public class Main {
             }
         }
 
+        //consulta sparql
+        String queryString = "PREFIX book: <http://book.org/>\n" +
+                "PREFIX book1: <http://book1.org/#>\n" +
+                "\n" +
+                "SELECT DISTINCT * \n" +
+                "\n" +
+                "WHERE {\n" +
+                "\t{\n" +
+                "\tbook:Ebay ?p ?o .\n" +
+                "}\n" +
+                "UNION\n" +
+                "{\n" +
+                "\tSERVICE <http://35.188.55.150:8890/sparql?default-graph-uri=http%3A%2F%2Fbook.org%2F>{\n" +
+                "  \t\tbook:Ebay ?p ?o .\n" +
+                "\t}\n" +
+                "}\n" +
+                "\n" +
+                "}\n" +
+                "LIMIT 100";
+        Query query = QueryFactory.create(queryString);
+        QueryExecution qexec = QueryExecutionFactory.create(query,model);
+
+        try{
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext()){
+                QuerySolution soln = results.nextSolution();
+
+                /*Literal s = soln.getLiteral("s");
+                Literal p = soln.getLiteral("p");
+                Literal o = soln.getLiteral("o");
+                System.out.println(s+" "+p+" "+o);*/
+                System.out.println(soln.toString());
+            }
+        } finally {
+            qexec.close();
+        }
 
         //OWLinfe.write(System.out);
 
