@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+xmlns:bk="http://book.org/books#"
+xmlns:aut="http://author.org/authors#"
+xmlns:pe="http://person.org/person#"
+xmlns:ed="http://editorial.org/editorials#"
+xmlns:dist="http://distributor.org/distributors#">
+
+    <!-- Clases -->
+	<rdfs:Class rdf:ID="Libro"/>
+	
+	<rdfs:Class rdf:ID="Persona"/>
+	
+	<rdfs:Class rdf:ID="Autor">
+		<rdfs:subClassOf rdf:resource="#Persona"/>
+	</rdfs:Class>
+
+    <rdfs:Class rdf:ID="Editorial"/>
+	
+	<rdfs:Class rdf:ID="Distribuidora"/>
+
+    <!-- Data Properties -->
+    <rdf:Property rdf:ID="Titulo">
+        <rdfs:domain rdf:resource="#Libro"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="AñoPublicacion">
+        <rdfs:domain rdf:resource="#Libro"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Genero">
+        <rdfs:domain rdf:resource="#Libro"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Nombre">
+        <rdfs:domain rdf:resource="#Persona"/>
+        <rdfs:domain rdf:resource="#Editorial"/>
+        <rdfs:domain rdf:resource="#Distribuidora"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Nacionalidad">
+        <rdfs:domain rdf:resource="#Persona"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="AñoNacimiento">
+        <rdfs:domain rdf:resource="#Persona"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="AñoFundacion">
+        <rdfs:domain rdf:resource="#Editorial"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Pais">
+        <rdfs:domain rdf:resource="#Distribuidora"/>
+        <rdfs:range rdf:resource="Literal"/>
+    </rdf:Property>
+
+    <!-- Object Properties -->
+    <rdf:Property rdf:ID="Escrito_Por">
+        <rdfs:domain rdf:resource="#Libro"/>
+        <rdfs:range rdf:resource="#Autor"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Escribio">
+        <rdfs:domain rdf:resource="#Autor"/>
+        <rdfs:range rdf:resource="#Libro"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Publicado_Por">
+        <rdfs:domain rdf:resource="#Libro"/>
+        <rdfs:range rdf:resource="#Editorial"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Publico">
+        <rdfs:domain rdf:resource="#Editorial"/>
+        <rdfs:range rdf:resource="#Libro"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Distribuido_Por">
+        <rdfs:domain rdf:resource="#Libro"/>
+        <rdfs:range rdf:resource="#Distribuidora"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:ID="Distribuyo">
+        <rdfs:domain rdf:resource="#Distribuidora"/>
+        <rdfs:range rdf:resource="#Libro"/>
+    </rdf:Property>
+
+    <!-- Instancias Libro -->
+    <rdf:Description rdf:about="http://book.org/books/Hamlet">
+        <rdf:type rdf:resource="#Libro"/>
+        <bk:Titulo>Hamlet</bk:Titulo>
+		<bk:AñoPublicacion>1601</bk:AñoPublicacion>
+        <bk:Genero>Tragedia</bk:Genero>
+        <aut:Escrito_Por rdf:resource="http://author.org/authors/W.Shakespeare"/>
+        <ed:Publicado_Por rdf:resource="http://editorial.org/editorials/SB"/>
+        <dist:Distribuido_Por rdf:resource="http://distributor.org/distributors/LibUsa"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://book.org/books/El_Señor_de_los_Anillos">
+        <rdf:type rdf:resource="#Libro"/>
+        <bk:Titulo>El Señor de los Anillos</bk:Titulo>
+		<bk:AñoPublicacion>1954</bk:AñoPublicacion>
+		<bk:Genero>Novela</bk:Genero>
+        <aut:Escrito_Por rdf:resource="http://author.org/authors/J.Tolkien"/>
+        <ed:Publicado_Por rdf:resource="http://editorial.org/editorials/EMinotauro"/>
+        <dist:Distribuido_Por rdf:resource="http://distributor.org/distributors/DistUK"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://book.org/books/La_Divina_Comedia">
+        <rdf:type rdf:resource="#Libro"/>
+        <bk:Titulo>La Divina Comedia</bk:Titulo>
+		<bk:AñoPublicacion>1472</bk:AñoPublicacion>
+		<bk:Genero>Epopeya</bk:Genero>
+        <aut:Escrito_Por rdf:resource="http://author.org/authors/D.Alighieri"/>
+        <ed:Publicado_Por rdf:resource="http://editorial.org/editorials/ESkla"/>
+        <dist:Distribuido_Por rdf:resource="http://distributor.org/distributors/DistCol"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://book.org/books/El_Codigo_da_Vinci">
+        <rdf:type rdf:resource="#Libro"/>
+		<bk:Titulo>El Código da Vinci</bk:Titulo>
+		<bk:AñoPublicacion>2003</bk:AñoPublicacion>
+		<bk:Genero>Novela</bk:Genero>
+        <aut:Escrito_Por rdf:resource="http://author.org/authors/D.Brown"/>
+        <ed:Publicado_Por rdf:resource="http://editorial.org/editorials/Doubleday"/>
+        <dist:Distribuido_Por rdf:resource="http://distributor.org/distributors/DistUsa"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://book.org/books/Don_Quijote_de_la_Mancha">
+        <rdf:type rdf:resource="#Libro"/>
+		<bk:Titulo>Don Quijote de la Mancha</bk:Titulo>
+		<bk:AñoPublicacion>1605</bk:AñoPublicacion>
+		<bk:Genero>Novela</bk:Genero>
+        <aut:Escrito_Por rdf:resource="http://author.org/authors/M.Cervantes"/>
+        <ed:Publicado_Por rdf:resource="http://editorial.org/editorials/FRobles"/>
+        <dist:Distribuido_Por rdf:resource="http://distributor.org/distributors/DistSpain"/>
+    </rdf:Description>
+
+    <!-- Instancias Autor -->
+    <rdf:Description rdf:about="http://author.org/authors/W.Shakespeare">
+        <rdf:type rdf:resource="#Autor"/>
+        <aut:Nombre>W. Shakespeare</aut:Nombre>
+        <aut:Nacionalidad>Inglesa</aut:Nacionalidad>
+        <aut:AñoNacimiento>1564</aut:AñoNacimiento>
+        <bk:Escribio rdf:resource="http://book.org/books/Hamlet"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://author.org/authors/J.Tolkien">
+        <rdf:type rdf:resource="#Autor"/>
+        <aut:Nombre>J. R. R. Tolkien</aut:Nombre>
+        <aut:Nacionalidad>Británico</aut:Nacionalidad>
+        <aut:AñoNacimiento>1892</aut:AñoNacimiento>
+        <bk:Escribio rdf:resource="http://book.org/books/El_Señor_de_los_Anillos"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://author.org/authors/D.Alighieri">
+        <rdf:type rdf:resource="#Autor"/>
+        <aut:Nombre>Dante Alighieri</aut:Nombre>
+        <aut:Nacionalidad>Italiano</aut:Nacionalidad>
+        <aut:AñoNacimiento>1265</aut:AñoNacimiento>
+        <bk:Escribio rdf:resource="http://book.org/books/La_Divina_Comedia"/>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about="http://author.org/authors/D.Brown">
+        <rdf:type rdf:resource="#Autor"/>
+        <aut:Nombre>Dan Brown</aut:Nombre>
+        <aut:Nacionalidad>Estadounidense</aut:Nacionalidad>
+        <aut:AñoNacimiento>1964</aut:AñoNacimiento>
+        <bk:Escribio rdf:resource="http://book.org/books/El_Codigo_da_Vinci"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://author.org/authors/M.Cervantes">
+        <rdf:type rdf:resource="#Autor"/>
+        <aut:Nombre>Miguel De Cervantes Saavedra</aut:Nombre>
+        <aut:Nacionalidad>Español</aut:Nacionalidad>
+        <aut:AñoNacimiento>1547</aut:AñoNacimiento>
+        <bk:Escribio rdf:resource="http://book.org/books/Don_Quijote_de_la_Mancha"/>
+    </rdf:Description>
+
+    <!-- Instancias Editorial -->
+    <rdf:Description rdf:about="http://editorial.org/editorials/SB">
+        <rdf:type rdf:resource="#Editorial"/>
+        <ed:Nombre>Simon and Brown</ed:Nombre>
+        <ed:AñoFundacion>1500</ed:AñoFundacion>
+        <bk:Publico rdf:resource="http://book.org/books/Hamlet"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://editorial.org/editorials/EMinotauro">
+        <rdf:type rdf:resource="#Editorial"/>
+        <ed:Nombre>Ediciones Minotauro</ed:Nombre>
+        <ed:AñoFundacion>1955</ed:AñoFundacion>
+        <bk:Publico rdf:resource="http://book.org/books/El_Señor_de_los_Anillos"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://editorial.org/editorials/ESkla">
+        <rdf:type rdf:resource="#Editorial"/>
+        <ed:Nombre>Editorial Skla</ed:Nombre>
+        <ed:AñoFundacion>2000</ed:AñoFundacion>
+        <bk:Publico rdf:resource="http://book.org/books/La_Divina_Comedia"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://editorial.org/editorials/Doubleday">
+        <rdf:type rdf:resource="#Editorial"/>
+        <ed:Nombre>Doubleday</ed:Nombre>
+        <ed:AñoFundacion>1897</ed:AñoFundacion>
+        <bk:Publico rdf:resource="http://book.org/books/El_Codigo_da_Vinci"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://editorial.org/editorials/FRobles">
+        <rdf:type rdf:resource="#Editorial"/>
+        <ed:Nombre>Francisco de Robles</ed:Nombre>
+        <ed:AñoFundacion>1585</ed:AñoFundacion>
+        <bk:Publico rdf:resource="http://book.org/books/Don_Quijote_de_la_Mancha"/>
+    </rdf:Description>
+
+    <!-- Instancias Distribuidora -->
+    <rdf:Description rdf:about="http://distributor.org/distributors/LibUsa">
+        <rdf:type rdf:resource="#Distribuidora"/>
+        <ed:Nombre>LibUsa</ed:Nombre>
+        <ed:Pais>Estados Unidos</ed:Pais>
+        <bk:Distribuyo rdf:resource="http://book.org/books/Hamlet"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://distributor.org/distributors/DistUK">
+        <rdf:type rdf:resource="#Distribuidora"/>
+        <ed:Nombre>DistUK</ed:Nombre>
+        <ed:Pais>Reino Unido</ed:Pais>
+        <bk:Distribuyo rdf:resource="http://book.org/books/El_Señor_de_los_Anillos"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://distributor.org/distributors/DistCol">
+        <rdf:type rdf:resource="#Distribuidora"/>
+        <ed:Nombre>DistCol</ed:Nombre>
+        <ed:Pais>Colombia</ed:Pais>
+        <bk:Distribuyo rdf:resource="http://book.org/books/La_Divina_Comedia"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://distributor.org/distributors/DistUsa">
+        <rdf:type rdf:resource="#Distribuidora"/>
+        <ed:Nombre>DistUsa</ed:Nombre>
+        <ed:Pais>Estados Unidos</ed:Pais>
+        <bk:Distribuyo rdf:resource="http://book.org/books/El_Codigo_da_Vinci"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://distributor.org/distributors/DistSpain">
+        <rdf:type rdf:resource="#Distribuidora"/>
+        <ed:Nombre>DistSpain</ed:Nombre>
+        <ed:Pais>España</ed:Pais>
+        <bk:Distribuyo rdf:resource="http://book.org/books/Don_Quijote_de_la_Mancha"/>
+    </rdf:Description>
+
+</rdf:RDF>
