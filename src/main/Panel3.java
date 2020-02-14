@@ -15,6 +15,8 @@ public class Panel3 extends JFrame {
     private JComboBox filtrarCB;
     private JTextField filtro;
     private JTextArea textArea1;
+    private JButton buscarBtn;
+    private JButton filtarBtn;
 
     public Panel3(){
 
