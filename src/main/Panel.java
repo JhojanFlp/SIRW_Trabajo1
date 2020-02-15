@@ -28,9 +28,6 @@ public class Panel  extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Estamos buscando XD");
-                String entity = Objects.requireNonNull(entityCB.getSelectedItem()).toString();
-                String instance = Objects.requireNonNull(instanceCB.getSelectedItem()).toString();
-                String feature = Objects.requireNonNull(featureCB.getSelectedItem()).toString();
             }
         });
     }

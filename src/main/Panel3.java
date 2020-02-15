@@ -28,27 +28,52 @@ public class Panel3 extends JFrame {
         super("SIRW - Trabajo 1 (Consulta #3)");
         setContentPane(Panel3);
 
+        // Get values and fill ComboBox
         String consulta = prefijos + "select ?a \n" +
                 "where {\n" +
-                "\t?a a ?b\n" +
+                "\t?a a ?class.\n" +
+                "\t?class a owl:Class.\n" +
+                "\t?a a ?b.\n" +
                 "}\n";
 
-        //ejemplo de consulta
-        LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"a"});
-        for(HashMap r:a){
+        String consultaF = prefijos + "select ?property \n" +
+                "where {\n" +
+                "\t?a ?property ?b.\n" +
+                "}\n";
 
+
+        LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"a"});
+        LinkedList<HashMap<String, String>> b = consultaEnTodasLasBD(consultaF, new String[]{"b"});
+
+        for(HashMap r:a){
             this.entityCB.addItem(r.get("a"));
         }
 
+        for(HashMap r:b) {
+            this.featureCB.addItem(r.get("b"));
+        }
 
 
         buscarBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(entityCB.getSelectedItem().toString());
-
+                String ent = entityCB.getSelectedItem().toString();
+                String fea = featureCB.getSelectedItem().toString();
+                exeConsulta1(ent, fea);
             }
         });
+    }
+
+    //Funciones para consultar
+    public static String exeConsulta1 (String entidad, String atributo){
+        String consulta1 = prefijos + "SELECT (COUNT(DISTINCT ?entity) AS ?conteo\n" +
+                "where {\n" +
+                "\t?entity a " + entidad + "\n"+
+                "\t?entity " + atributo + " ?data.\n" +
+                "}\n";
+
+        LinkedList<HashMap<String, String>> c1 = consultaEnTodasLasBD(consulta1, new String[]{"a"});
     }
 
 }
