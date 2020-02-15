@@ -32,7 +32,7 @@ public class Main {
             "prefix owl: <http://www.w3.org/2002/07/owl#>\n" +
             "prefix vocab: <http://35.208.107.33:2020/resource/vocab/> \n" +
             "prefix book: <http://book.org/> \n" +
-            "prefix book1: <http://book1.org/#>\n";
+            "prefix book1: <http://book1.org/>\n";
 
     public static void main(String[] args) throws FileNotFoundException{
 
@@ -140,11 +140,11 @@ public class Main {
                         traducirConsultaA(consulta,"book:","book1:"),
                         variables
                 ));
-        res.addAll(consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","dbo:")+"\nlimit 15",
-                variables,
-                "http://dbpedia.org/sparql/"
-        ));
+        //res.addAll(consultaEnEndpoint(
+          //      traducirConsultaA(consulta,"book:","dbo:")+"\nlimit 15",
+            //    variables,
+              //  "http://dbpedia.org/sparql/"
+        //));
         return res;
 
 
