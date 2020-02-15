@@ -157,9 +157,25 @@ public class Main {
         //System.out.println("/////////////////////\n"+consulta);
         QueryExecution qExec = conn.query(consulta) ;
         ResultSet rs = qExec.execSelect() ;
+
+       /* System.out.println("rownumber: "+rs.getRowNumber());
+        for(String r:rs.getResultVars()){
+            System.out.println("resultvar: "+r);
+        }
+        for(String r:variables){
+            System.out.println("variable dada: "+r);
+        }
+        if(rs.hasNext()){
+            System.out.println("hasnext");
+        }else{
+            System.out.println("nohasnext");
+        }*/
+
         while(rs.hasNext()) {
             QuerySolution qs = rs.next() ;
             HashMap fila = new HashMap();
+            //System.out.println("qs: "+qs.toString());
+            if(qs.toString().equals("")){continue;}
             for(String v: variables){
                 fila.put(v,qs.get(v).toString());
             }

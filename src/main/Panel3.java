@@ -151,7 +151,7 @@ public class Panel3 extends JFrame {
                     "}\n";
             LinkedList<HashMap<String, String>> c3 = consultaEnTodasLasBD(consulta3max, new String[]{"max"});
             for(HashMap r:c3){
-                System.out.println(r.get("data").toString());
+                System.out.println(r.get("max").toString());
             }
 
             //resp += "- Máximo = " + max + "\n" +
