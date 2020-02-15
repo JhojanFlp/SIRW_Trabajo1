@@ -27,6 +27,8 @@ public class Main {
     public static InfModel model;
     public static final String prefijos = "prefix dbo: <http://dbpedia.org/ontology/>\n" +
             "prefix dbp: <http://dbpedia.org/property/>\n" +
+            "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+            "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
             "prefix owl: <http://www.w3.org/2002/07/owl#>\n" +
             "prefix vocab: <http://35.208.107.33:2020/resource/vocab/> \n" +
             "prefix book: <http://book.org/> \n" +
@@ -138,11 +140,11 @@ public class Main {
                         traducirConsultaA(consulta,"book:","book1:"),
                         variables
                 ));
-        /*res.addAll(consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","dbo:"),
+        res.addAll(consultaEnEndpoint(
+                traducirConsultaA(consulta,"book:","dbo:")+"\nlimit 15",
                 variables,
                 "http://dbpedia.org/sparql/"
-        ));*/
+        ));
         return res;
 
 
@@ -155,9 +157,25 @@ public class Main {
         //System.out.println("/////////////////////\n"+consulta);
         QueryExecution qExec = conn.query(consulta) ;
         ResultSet rs = qExec.execSelect() ;
+
+       /* System.out.println("rownumber: "+rs.getRowNumber());
+        for(String r:rs.getResultVars()){
+            System.out.println("resultvar: "+r);
+        }
+        for(String r:variables){
+            System.out.println("variable dada: "+r);
+        }
+        if(rs.hasNext()){
+            System.out.println("hasnext");
+        }else{
+            System.out.println("nohasnext");
+        }*/
+
         while(rs.hasNext()) {
             QuerySolution qs = rs.next() ;
             HashMap fila = new HashMap();
+            //System.out.println("qs: "+qs.toString());
+            if(qs.toString().equals("")){continue;}
             for(String v: variables){
                 fila.put(v,qs.get(v).toString());
             }
