@@ -74,10 +74,10 @@ public class Main {
                 "limit 10";
 
         //ejemplo de consulta
-        LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"a","b"});
+        /*LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"a","b"});
         for(HashMap r:a){
             System.out.println("a: "+r.get("a")+" b: "+r.get("b"));
-        }
+        }*/
 
 
     }
@@ -138,11 +138,11 @@ public class Main {
                         traducirConsultaA(consulta,"book:","book1:"),
                         variables
                 ));
-        res.addAll(consultaEnEndpoint(
+        /*res.addAll(consultaEnEndpoint(
                 traducirConsultaA(consulta,"book:","dbo:"),
                 variables,
                 "http://dbpedia.org/sparql/"
-        ));
+        ));*/
         return res;
 
 
