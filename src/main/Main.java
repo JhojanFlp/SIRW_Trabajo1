@@ -138,11 +138,11 @@ public class Main {
                         traducirConsultaA(consulta,"book:","book1:"),
                         variables
                 ));
-        /*res.addAll(consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","dbo:"),
+        res.addAll(consultaEnEndpoint(
+                traducirConsultaA(consulta,"book:","dbo:")+"\nlimit 15",
                 variables,
                 "http://dbpedia.org/sparql/"
-        ));*/
+        ));
         return res;
 
 
