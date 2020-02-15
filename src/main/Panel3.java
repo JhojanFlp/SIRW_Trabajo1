@@ -99,6 +99,7 @@ public class Panel3 extends JFrame {
 
         int respuesta = 0;
         String resp = "";
+        DecimalFormat f = new DecimalFormat("##.000");
 
         for(HashMap r:c1){
             char v = r.get("conteo").toString().charAt(0);
@@ -136,7 +137,7 @@ public class Panel3 extends JFrame {
                 prom += r.get("data").toString().length();
             }
             prom = prom / c3.size();
-            DecimalFormat f = new DecimalFormat("##.000");
+
             String r1 = String.valueOf(f.format(prom));
             resp += "- Promedio de tamaño de cadenas = " + r1;
 
@@ -144,19 +145,28 @@ public class Panel3 extends JFrame {
             this.filtrarCB.addItem("contiene");
 
         } else{
-            String consulta3max = prefijos + "select (max(?data) as ?max)\n" +
+            System.out.println("max");
+            String consulta3max = prefijos + "select (str(?maximo) as ?max) (str(?minimo) as ?min) (str(?promedio) as ?prom)\n" +
+                    "where { \n" +
+                    "{ select (max(?data) as ?maximo) (min(?data) as ?minimo) (avg(?data) as ?promedio)\n" +
                     "where {\n" +
                     "\t?entity a <" + entidad + ">.\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
+                    "\t} }\n" +
                     "}\n";
-            LinkedList<HashMap<String, String>> c3 = consultaEnTodasLasBD(consulta3max, new String[]{"max"});
+            System.out.println(consulta3max);
+            LinkedList<HashMap<String, String>> c3 = consultaEnTodasLasBD(consulta3max, new String[]{"max", "min", "prom"});
+
+            String max = "", min = "", prom = "";
             for(HashMap r:c3){
-                System.out.println(r.get("data").toString());
+                max = r.get("max").toString();
+                min = r.get("min").toString();
+                prom = r.get("prom").toString();
             }
 
-            //resp += "- Máximo = " + max + "\n" +
-              //      "- Mínimo = " + min + "\n" +
-                //    "- Promedio = " + prom + "\n";
+            resp += "- Máximo = " + max + "\n" +
+                    "- Mínimo = " + min + "\n" +
+                    "- Promedio = " + prom + "\n";
 
             this.filtrarCB.addItem("mayor que");
             this.filtrarCB.addItem("menor que");

@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 // Librerías de Jena
+import org.apache.jena.base.Sys;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.rdfconnection.RDFConnection;
@@ -32,7 +33,7 @@ public class Main {
             "prefix owl: <http://www.w3.org/2002/07/owl#>\n" +
             "prefix vocab: <http://35.208.107.33:2020/resource/vocab/> \n" +
             "prefix book: <http://book.org/> \n" +
-            "prefix book1: <http://book1.org/#>\n";
+            "prefix book1: <http://book1.org/>\n";
 
     public static void main(String[] args) throws FileNotFoundException{
 
@@ -112,6 +113,7 @@ public class Main {
         }
         return r;
     }
+
     public static String traducirConsultaA(String consulta, String prefijoOriginal, String nuevaIRI){
         String[] consultaPartida = consulta.split(" ");
         for (int i =0; i<consultaPartida.length;i++) { //asegurarse que tododos los books:ID tengan espacios alrededor
@@ -125,16 +127,18 @@ public class Main {
     public static LinkedList<HashMap<String,String>> consultaEnTodasLasBD(
             String consulta, String[] variables){
         LinkedList res = new LinkedList();
-        res.addAll(consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","vocab:"),
-                variables,
-                "http://35.208.107.33:2020/sparql"
-                ));
+
+        //res.addAll(consultaEnEndpoint(
+          //      traducirConsultaA(consulta,"book:","vocab:"),
+            //    variables,
+              //  "http://35.208.107.33:2020/sparql"
+                //));
 
         res.addAll(
                 consultaEnEndpoint(
                 consulta, variables, "http://35.188.55.150:8890/sparql"
                 ));
+
         res.addAll(
                 consultaEnRDF(
                         traducirConsultaA(consulta,"book:","book1:"),
