@@ -25,6 +25,12 @@ import org.apache.jena.util.FileManager;
 
 public class Main {
     public static InfModel model;
+    public static final String prefijos = "prefix dbo: <http://dbpedia.org/ontology/>\n" +
+            "prefix dbp: <http://dbpedia.org/property/>\n" +
+            "prefix owl: <http://www.w3.org/2002/07/owl#>\n" +
+            "prefix vocab: <http://35.208.107.33:2020/resource/vocab/> \n" +
+            "prefix book: <http://book.org/> \n" +
+            "prefix book1: <http://book1.org/#>\n";
 
     public static void main(String[] args) throws FileNotFoundException{
 
@@ -61,25 +67,23 @@ public class Main {
                 System.out.println(" - " + i.next());
             }
         }
+        String consulta = prefijos + "select ?a ?b\n" +
+                "where {\n" +
+                "\t?a book:Distribuido_Por ?b\n" +
+                "}\n" +
+                "limit 10";
 
         //ejemplo de consulta
-        LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD("prefix owl: <http://www.w3.org/2002/07/owl#>\n" +
-                "prefix book: <http://book.org/> \n" +
-                "prefix book1: <http://book1.org/#>\n" +
-                "SELECT DISTINCT ?a ?b WHERE {\n" +
-                "  ?a book:Distribuido_Por ?b\n" +
-                "}\n" +
-                "LIMIT 100",new String[]{"a","b"});
+        LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"a","b"});
         for(HashMap r:a){
-            System.out.println("a: "+r.get("a")+"b: "+r.get("b"));
+            System.out.println("a: "+r.get("a")+" b: "+r.get("b"));
         }
 
 
     }
     public static String nombreEquivalenteEnLaOntologia(String nombre, String nuevaIri){
-        String queryString = String.format("prefix owl: <http://www.w3.org/2002/07/owl#>\n" +
-                "prefix book: <http://book.org/> \n" +
-                "prefix book1: <http://book1.org/#>\n" +
+        String queryString = String.format(
+                prefijos +
                 "select ?r\n" +
                 "where {\n" +
                 "{?r owl:equivalentClass %1$s}\n" +
@@ -119,10 +123,11 @@ public class Main {
     public static LinkedList<HashMap<String,String>> consultaEnTodasLasBD(
             String consulta, String[] variables){
         LinkedList res = new LinkedList();
-        /*consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","book1:"),
+        res.addAll(consultaEnEndpoint(
+                traducirConsultaA(consulta,"book:","vocab:"),
                 variables,
-                "");*/
+                "http://35.208.107.33:2020/sparql"
+                ));
 
         res.addAll(
                 consultaEnEndpoint(
@@ -133,6 +138,11 @@ public class Main {
                         traducirConsultaA(consulta,"book:","book1:"),
                         variables
                 ));
+        res.addAll(consultaEnEndpoint(
+                traducirConsultaA(consulta,"book:","dbo:"),
+                variables,
+                "http://dbpedia.org/sparql/"
+        ));
         return res;
 
 
@@ -142,7 +152,7 @@ public class Main {
     ){
         LinkedList res = new LinkedList();
         RDFConnection conn = RDFConnectionFactory.connect(endpoint);
-
+        //System.out.println("/////////////////////\n"+consulta);
         QueryExecution qExec = conn.query(consulta) ;
         ResultSet rs = qExec.execSelect() ;
         while(rs.hasNext()) {
@@ -160,7 +170,7 @@ public class Main {
     public static LinkedList<HashMap<String,String>> consultaEnRDF(
             String consulta, String[] variables
     ){
-        System.out.println("/////////////////////\n"+consulta);
+        //System.out.println("/////////////////////\n"+consulta);
         Model modelRDF = ModelFactory.createDefaultModel() ;
         modelRDF.read("RDF1.xml") ;
 
