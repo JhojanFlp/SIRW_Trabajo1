@@ -38,10 +38,10 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame frame = new Panel();
+                JFrame frame = new PanelPrincipal();
                 frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                frame.setSize(500, 500);
-                frame.setLocationRelativeTo(null);
+                frame.setSize(500, 100);
+                //frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
 
                 //Fill to CB Instance
