@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 // Librerías de Jena
+import org.apache.http.HttpException;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.rdfconnection.RDFConnection;
@@ -80,6 +81,13 @@ public class Main {
         for(HashMap r:a){
             System.out.println("a: "+r.get("a")+" b: "+r.get("b"));
         }*/
+        //System.out.println(nombreEquivalenteEnLaOntologia("<http://book.org/Autor>","<http://book1.org/#>"));
+        /*consulta = prefijos+"select distinct ?instance\n" +
+                "where{\n" +
+                "\t?instance a <http://book.org/Libro> \n" +
+                "}";
+        System.out.println(traducirConsultaA(consulta,"book:","http://book.org/","book1:","<http://book1.org/#>"));
+        System.out.println(nombreEquivalenteEnLaOntologia("<http://book.org/Autor>","<http://book1.org/#>"));*/
 
 
     }
@@ -96,7 +104,7 @@ public class Main {
         //System.out.println(queryString);
         Query query = QueryFactory.create(queryString);
         QueryExecution qexec = QueryExecutionFactory.create(query,model);
-        String r ="error";
+        String r =nombre;
         try {
 
             ResultSet results = qexec.execSelect();
@@ -112,24 +120,35 @@ public class Main {
         }
         return r;
     }
-    public static String traducirConsultaA(String consulta, String prefijoOriginal, String nuevaIRI){
+    public static String traducirConsultaA(String consulta, String prefijoOriginal,String IRIoriginal, String nuevoPrefijo, String nuevaIRI){
+
+
+        consulta = consulta.substring(prefijos.length());
         String[] consultaPartida = consulta.split(" ");
         for (int i =0; i<consultaPartida.length;i++) { //asegurarse que tododos los books:ID tengan espacios alrededor
             if(consultaPartida[i].matches("^"+prefijoOriginal+"\\S+")){
                 consultaPartida[i] = "<"+nombreEquivalenteEnLaOntologia(consultaPartida[i],nuevaIRI)+">";
             }
         }
-        return String.join(" ", consultaPartida);
+
+        for (int i =0; i<consultaPartida.length;i++) { //asegurarse que tododos los books:ID tengan espacios alrededor
+            if(consultaPartida[i].matches("^<"+IRIoriginal+"\\S+")){
+                String r = nombreEquivalenteEnLaOntologia(consultaPartida[i],nuevaIRI);
+                if(r.startsWith("<")){
+                    r = consultaPartida[i];
+                }else{
+                    consultaPartida[i] = "<"+nombreEquivalenteEnLaOntologia(consultaPartida[i],nuevaIRI)+">";
+                }
+
+            }
+        }
+        return prefijos+String.join(" ", consultaPartida);
     }
 
     public static LinkedList<HashMap<String,String>> consultaEnTodasLasBD(
             String consulta, String[] variables){
         LinkedList res = new LinkedList();
-        res.addAll(consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","vocab:"),
-                variables,
-                "http://35.208.107.33:2020/sparql"
-                ));
+
 
         res.addAll(
                 consultaEnEndpoint(
@@ -137,14 +156,19 @@ public class Main {
                 ));
         res.addAll(
                 consultaEnRDF(
-                        traducirConsultaA(consulta,"book:","book1:"),
+                        traducirConsultaA(consulta,"book:","http://book.org/","book1:","<http://book1.org/#>"),
                         variables
                 ));
-        /*res.addAll(consultaEnEndpoint(
-                traducirConsultaA(consulta,"book:","dbo:")+"\nlimit 15",
+        res.addAll(consultaEnEndpoint(
+                traducirConsultaA(consulta,"book:","http://book.org/","vocab:","<http://35.208.107.33:2020/resource/vocab/>"),
+                variables,
+                "http://35.208.107.33:2020/sparql"
+        ));
+        res.addAll(consultaEnEndpoint(
+                traducirConsultaA(consulta,"book:","http://book.org/","dbo:", "<http://dbpedia.org/ontology/>")+"\nlimit 15",
                 variables,
                 "http://dbpedia.org/sparql/"
-        ));*/
+        ));
         return res;
 
 
@@ -154,9 +178,17 @@ public class Main {
     ){
         LinkedList res = new LinkedList();
         RDFConnection conn = RDFConnectionFactory.connect(endpoint);
-        //System.out.println("/////////////////////\n"+consulta);
+        System.out.println("/////////////////////\n"+endpoint+"\n"+consulta);
         QueryExecution qExec = conn.query(consulta) ;
-        ResultSet rs = qExec.execSelect() ;
+        qExec.setTimeout(1000,1000);
+        ResultSet rs;
+        try {
+             rs = qExec.execSelect();
+        }catch (Exception e){
+            System.out.println("timeout en "+endpoint);
+            return res;
+        }
+        System.out.println("consulta terminada");
 
        /* System.out.println("rownumber: "+rs.getRowNumber());
         for(String r:rs.getResultVars()){
@@ -188,7 +220,7 @@ public class Main {
     public static LinkedList<HashMap<String,String>> consultaEnRDF(
             String consulta, String[] variables
     ){
-        //System.out.println("/////////////////////\n"+consulta);
+        System.out.println("/////////////////////\nRDF\n"+consulta);
         Model modelRDF = ModelFactory.createDefaultModel() ;
         modelRDF.read("RDF1.xml") ;
 
