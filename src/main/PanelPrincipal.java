@@ -32,6 +32,16 @@ public class PanelPrincipal extends JFrame {
             }
         });
 
+        consulta2Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new Panel2();
+                frame.setSize(500, 500);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
+
         consulta3Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
