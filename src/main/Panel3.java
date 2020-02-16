@@ -1,5 +1,6 @@
 package main;
 
+import javafx.beans.binding.IntegerBinding;
 import org.apache.jena.base.Sys;
 
 import javax.swing.*;
@@ -89,6 +90,8 @@ public class Panel3 extends JFrame {
     //Funciones para consultar
     public String exeConsulta1(String entidad, String atributo){
 
+        DecimalFormat f = new DecimalFormat("##.000");
+
         String consulta1 = prefijos + "select (count(distinct ?entity) as ?conteo)\n" +
                 "where {\n" +
                 "\t?entity a <" + entidad + ">.\n"+
@@ -136,7 +139,7 @@ public class Panel3 extends JFrame {
                 prom += r.get("data").toString().length();
             }
             prom = prom / c3.size();
-            DecimalFormat f = new DecimalFormat("##.000");
+
             String r1 = String.valueOf(f.format(prom));
             resp += "- Promedio de tamaño de cadenas = " + r1;
 
@@ -149,24 +152,82 @@ public class Panel3 extends JFrame {
                     "\t?entity a <" + entidad + ">.\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "}\n";
-            LinkedList<HashMap<String, String>> c3 = consultaEnTodasLasBD(consulta3max, new String[]{"max"});
-            for(HashMap r:c3){
-                System.out.println(r.get("max").toString());
+
+            String consulta3min = prefijos + "select (min(?data) as ?min)\n" +
+                    "where {\n" +
+                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity <" + atributo + "> ?data.\n" +
+                    "}\n";
+
+            String consulta3prom = prefijos + "select (avg(?data) as ?prom)\n" +
+                    "where {\n" +
+                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity <" + atributo + "> ?data.\n" +
+                    "}\n";
+
+            String consulta3maxi = prefijos + "select (str(?maxi) as ?maximo) \n" +
+                    "where {\n" +
+                    "{ select (max(?data) as ?maxi)\n" +
+                    "where {\n" +
+                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity <" + atributo + "> ?data.\n" +
+                    "} }\n" +
+                    "}";
+
+            LinkedList<HashMap<String, String>> c3max = consultaEnTodasLasBD(consulta3max, new String[]{"max"});
+            LinkedList<HashMap<String, String>> c3min = consultaEnTodasLasBD(consulta3min, new String[]{"min"});
+            LinkedList<HashMap<String, String>> c3prom = consultaEnTodasLasBD(consulta3prom, new String[]{"prom"});
+
+            ArrayList maxA = new ArrayList();
+            ArrayList minA = new ArrayList();
+            ArrayList promA = new ArrayList();
+            String max = "", min ="", prom="";
+            for(HashMap r:c3max){
+                maxA.add(Integer.parseInt(r.get("max").toString().substring(0, 4)));
+            }
+            for(HashMap r:c3min){
+                minA.add(Integer.parseInt(r.get("min").toString().substring(0, 4)));
+            }
+            for(HashMap r:c3prom){
+                int index = r.get("prom").toString().indexOf('^');
+                promA.add(Double.parseDouble(r.get("prom").toString().substring(0, index)));
             }
 
-            //resp += "- Máximo = " + max + "\n" +
-              //      "- Mínimo = " + min + "\n" +
-                //    "- Promedio = " + prom + "\n";
+            int mayor = 0, menor = Integer.parseInt(maxA.get(0).toString()), promedio = 0;
+            for (Object value : maxA) {
+                if (Integer.parseInt(value.toString()) > mayor) {
+                    mayor = Integer.parseInt(value.toString());
+                }
+            }
+
+            for (Object o : minA) {
+                if (Integer.parseInt(o.toString()) < menor) {
+                    menor = Integer.parseInt(o.toString());
+                }
+            }
+
+            for (Object o : promA) {
+                promedio += Double.parseDouble(o.toString());
+            }
+
+            promedio /= promA.size();
+
+
+            resp += "- Máximo = " + mayor + "\n" +
+                    "- Mínimo = " + menor + "\n" +
+                    "- Promedio = " + f.format(promedio) + "\n";
 
             this.filtrarCB.addItem("mayor que");
             this.filtrarCB.addItem("menor que");
         }
 
-
+        this.filtro.setText("");
         return resp;
     }
 
     public static String exeConsulta2 (String entidad, String atributo, String option, String filtro) {
+
+        DecimalFormat f = new DecimalFormat("##.000");
 
         String operator, consulta1;
         if(option.equals("contiene")){
@@ -192,8 +253,6 @@ public class Panel3 extends JFrame {
                     "filter (?data " + operator + " " + filtro + ").\n" +
                     "}\n";
         }
-
-        System.out.println(consulta1);
 
         LinkedList<HashMap<String, String>> c1 = consultaEnTodasLasBD(consulta1, new String[]{"conteo"});
 
@@ -235,11 +294,71 @@ public class Panel3 extends JFrame {
                 prom += r.get("data").toString().length();
             }
             prom = prom / c3.size();
-            DecimalFormat f = new DecimalFormat("##.000");
             String r1 = String.valueOf(f.format(prom));
             resp += "- Promedio de tamaño de cadenas = " + r1;
         } else{
-            // TODO
+            String consulta3max = prefijos + "select (max(?data) as ?max)\n" +
+                    "where {\n" +
+                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity <" + atributo + "> ?data.\n" +
+                    "filter (?data " + operator + " " + filtro + ").\n" +
+                    "}\n";
+
+            String consulta3min = prefijos + "select (min(?data) as ?min)\n" +
+                    "where {\n" +
+                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity <" + atributo + "> ?data.\n" +
+                    "filter (?data " + operator + " " + filtro + ").\n" +
+                    "}\n";
+
+            String consulta3prom = prefijos + "select (avg(?data) as ?prom)\n" +
+                    "where {\n" +
+                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity <" + atributo + "> ?data.\n" +
+                    "filter (?data " + operator + " " + filtro + ").\n" +
+                    "}\n";
+
+            LinkedList<HashMap<String, String>> c3max = consultaEnTodasLasBD(consulta3max, new String[]{"max"});
+            LinkedList<HashMap<String, String>> c3min = consultaEnTodasLasBD(consulta3min, new String[]{"min"});
+            LinkedList<HashMap<String, String>> c3prom = consultaEnTodasLasBD(consulta3prom, new String[]{"prom"});
+
+            ArrayList maxA = new ArrayList();
+            ArrayList minA = new ArrayList();
+            ArrayList promA = new ArrayList();
+            String max = "", min ="", prom="";
+            for(HashMap r:c3max){
+                maxA.add(Integer.parseInt(r.get("max").toString().substring(0, 4)));
+            }
+            for(HashMap r:c3min){
+                minA.add(Integer.parseInt(r.get("min").toString().substring(0, 4)));
+            }
+            for(HashMap r:c3prom){
+                int index = r.get("prom").toString().indexOf('^');
+                promA.add(Double.parseDouble(r.get("prom").toString().substring(0, index)));
+            }
+
+            int mayor = 0, menor = Integer.parseInt(maxA.get(0).toString()), promedio = 0;
+            for (Object value : maxA) {
+                if (Integer.parseInt(value.toString()) > mayor) {
+                    mayor = Integer.parseInt(value.toString());
+                }
+            }
+
+            for (Object o : minA) {
+                if (Integer.parseInt(o.toString()) < menor) {
+                    menor = Integer.parseInt(o.toString());
+                }
+            }
+
+            for (Object o : promA) {
+                promedio += Double.parseDouble(o.toString());
+            }
+
+            promedio /= promA.size();
+
+            resp += "- Máximo = " + mayor + "\n" +
+                    "- Mínimo = " + menor + "\n" +
+                    "- Promedio = " + f.format(promedio) + "\n";
 
         }
 
