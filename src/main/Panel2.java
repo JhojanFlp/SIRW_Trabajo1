@@ -33,15 +33,9 @@ public class Panel2 extends JFrame {
                 "\t?class rdfs:subClassOf ?aux. }" +
                 "}\n";
 
-        String consultaF = prefijos + "select distinct ?property \n" +
-                "where {\n" +
-                "\t?a ?property ?b.\n" +
-                "\t?property a owl:DatatypeProperty.\n" +
-                "}\n";
 
 
         LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"class"});
-        //LinkedList<HashMap<String, String>> b = consultaEnTodasLasBD(consultaF, new String[]{"property"});
 
         for (HashMap r : a) {
             this.entityCB.addItem(r.get("class"));
@@ -55,7 +49,7 @@ public class Panel2 extends JFrame {
                 String entidadSeleccionada = entityCB.getSelectedItem().toString();
                 String consulta = prefijos + "select distinct ?instance\n" +
                         "where{\n" +
-                        "\t?instance a <" + entidadSeleccionada + ">\n" +
+                        "\t?instance a <" + entidadSeleccionada + "> \n" +
                         "}";
                 LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"instance"});
                 instanceCB.removeAllItems();
@@ -71,7 +65,7 @@ public class Panel2 extends JFrame {
                 String instanciaSeleccionada = instanceCB.getSelectedItem().toString();
                 String consulta = prefijos + "select distinct ?property\n" +
                         "where{\n" +
-                        "\t<" + instanciaSeleccionada + "> ?property ?b.\n" +
+                        "\t <" + instanciaSeleccionada + "> ?property ?b.\n" +
                         "\t?property a owl:DatatypeProperty.\n" +
                         "}";
                 LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"property"});
@@ -112,10 +106,10 @@ public class Panel2 extends JFrame {
                 String res = "";
                 String consulta = prefijos + "select distinct ?r\n" +
                         "where{\n" +
-                        "\t?r a <"+entidad+">;\n" +
-                        "\t\t<"+atributo+"> ?atr.\n" +
-                        "\t\t<"+instancia+"> <"+atributo+"> ?atr.\n" +
-                        "filter(?r != <"+instancia+">)." +
+                        "\t?r a <"+entidad+"> ;\n" +
+                        "\t\t <"+atributo+"> ?atr.\n" +
+                        "\t\t <"+instancia+"> <"+atributo+"> ?atr.\n" +
+                        "filter(?r != <"+instancia+"> )." +
                         "}";
                 LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"r"});
                 for (HashMap r : a) {

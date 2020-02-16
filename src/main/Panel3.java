@@ -44,7 +44,6 @@ public class Panel3 extends JFrame {
 
         String consultaF = prefijos + "select distinct ?property \n" +
                 "where {\n" +
-                "\t?a ?property ?b.\n" +
                 "\t?property a owl:DatatypeProperty.\n" +
                 "}\n";
 
@@ -94,7 +93,7 @@ public class Panel3 extends JFrame {
 
         String consulta1 = prefijos + "select (count(distinct ?entity) as ?conteo)\n" +
                 "where {\n" +
-                "\t?entity a <" + entidad + ">.\n"+
+                "\t?entity a <" + entidad + "> .\n"+
                 "\t?entity <" + atributo + "> ?data.\n" +
                 "}\n";
 
@@ -113,7 +112,7 @@ public class Panel3 extends JFrame {
         // Numérico o String?
         String consulta2 = prefijos + "select ?range\n" +
                 "where {\n" +
-                "\t<" + atributo +"> rdfs:range ?range.\n" +
+                "\t <" + atributo +"> rdfs:range ?range.\n" +
                 "}\n";
 
         LinkedList<HashMap<String, String>> range = consultaEnTodasLasBD(consulta2, new String[]{"range"});
@@ -129,7 +128,7 @@ public class Panel3 extends JFrame {
             // Es string
             String consulta3 = prefijos + "select ?data\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "}\n";
 
@@ -149,19 +148,19 @@ public class Panel3 extends JFrame {
         } else{
             String consulta3max = prefijos + "select (max(?data) as ?max)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "}\n";
 
             String consulta3min = prefijos + "select (min(?data) as ?min)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "}\n";
 
             String consulta3prom = prefijos + "select (avg(?data) as ?prom)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "}\n";
 
@@ -169,7 +168,7 @@ public class Panel3 extends JFrame {
                     "where {\n" +
                     "{ select (max(?data) as ?maxi)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "} }\n" +
                     "}";
@@ -241,14 +240,14 @@ public class Panel3 extends JFrame {
         if(option.equals("contiene")) {
             consulta1 = prefijos + "select (count(distinct ?entity) as ?conteo)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n" +
+                    "\t?entity a <" + entidad + "> .\n" +
                     "\t?entity <" + atributo + "> ?data\n" +
                     "filter regex (?data, \"" + filtro + "\", \"i\").\n" +
                     "}\n";
         } else{
             consulta1 = prefijos + "select (count(distinct ?entity) as ?conteo)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n" +
+                    "\t?entity a <" + entidad + "> .\n" +
                     "\t?entity <" + atributo + "> ?data\n" +
                     "filter (?data " + operator + " " + filtro + ").\n" +
                     "}\n";
@@ -283,7 +282,7 @@ public class Panel3 extends JFrame {
             // Es string
             String consulta3 = prefijos + "select ?data\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "filter regex (?data, \"" + filtro + "\", \"i\").\n" +
                     "}\n";
@@ -299,21 +298,21 @@ public class Panel3 extends JFrame {
         } else{
             String consulta3max = prefijos + "select (max(?data) as ?max)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "filter (?data " + operator + " " + filtro + ").\n" +
                     "}\n";
 
             String consulta3min = prefijos + "select (min(?data) as ?min)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "filter (?data " + operator + " " + filtro + ").\n" +
                     "}\n";
 
             String consulta3prom = prefijos + "select (avg(?data) as ?prom)\n" +
                     "where {\n" +
-                    "\t?entity a <" + entidad + ">.\n"+
+                    "\t?entity a <" + entidad + "> .\n"+
                     "\t?entity <" + atributo + "> ?data.\n" +
                     "filter (?data " + operator + " " + filtro + ").\n" +
                     "}\n";
