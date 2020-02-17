@@ -144,7 +144,7 @@ book:Autor rdf:type owl:Class ;
                            book:Writer ,
                            book1:Autor ,
                            vocab:autor ,
-                           dbo:autor;
+                           dbo:Writer;
        rdfs:subClassOf book:Persona .
 
 

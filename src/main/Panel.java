@@ -99,7 +99,7 @@ public class Panel  extends JFrame{
 
         String consulta = prefijos + "select ?p ?data \n" +
                 "where {\n" +
-                "\t<" + individual + "> ?p ?data.\n" +
+                "\t <" + individual + "> ?p ?data.\n" +
                 "\t?p a owl:DatatypeProperty.\n" +
                 "}\n";
 
@@ -113,7 +113,7 @@ public class Panel  extends JFrame{
 
         String consulta1 = prefijos + "select ?p ?data \n" +
                 "where {\n" +
-                "\t<" + individual + "> ?p ?data.\n" +
+                "\t <" + individual + "> ?p ?data.\n" +
                 "\t?p a owl:ObjectProperty.\n" +
                 "}\n";
 
@@ -127,7 +127,7 @@ public class Panel  extends JFrame{
 
         String consulta2 = prefijos + "select ?eq\n" +
                 "where {\n" +
-                "\t<" + individual + "> owl:sameAs ?eq.\n" +
+                "\t <" + individual + "> owl:sameAs ?eq.\n" +
                 "}\n";
 
         LinkedList<HashMap<String, String>> c2 = consultaEnTodasLasBD(consulta2, new String[]{"eq"});
@@ -145,7 +145,7 @@ public class Panel  extends JFrame{
 
         String consulta = prefijos + "select ?instance \n" +
                 "where {\n" +
-                "\t?entity rdfs:subClassOf <" + ent + ">.\n" +
+                "\t?entity rdfs:subClassOf <" + ent + "> .\n" +
                 "\t?instance a ?entity.\n" +
                 "}\n";
 

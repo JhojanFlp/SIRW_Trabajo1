@@ -100,7 +100,7 @@ public class Panel4 extends JFrame{
                 "\t{ <" + i1 + "> ?p <" + i2 + "> .\n" +
                 "\t?p a owl:ObjectProperty. }\n"+
                 "\tunion {\n" +
-                "\t<" + i2 + "> ?p <" + i1 + "> .\n" +
+                "\t <" + i2 + "> ?p <" + i1 + "> .\n" +
                 "\t?p a owl:ObjectProperty. }\n"+
                 "}\n";
 
@@ -118,7 +118,7 @@ public class Panel4 extends JFrame{
 
         String consulta = prefijos + "select distinct ?ent2\n" +
                 "where {\n" +
-                "\t<" + i1 + "> ?p ?ent2 .\n" +
+                "\t <" + i1 + "> ?p ?ent2 .\n" +
                 "\t?ent2 ?a <" + i2 + "> .\n" +
                 "\t?p a owl:ObjectProperty.\n"+
                 "\t?a a owl:ObjectProperty.\n"+
