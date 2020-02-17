@@ -26,7 +26,7 @@ public class PanelPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Panel();
-                frame.setSize(500, 500);
+                frame.setSize(600, 600);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
@@ -46,6 +46,16 @@ public class PanelPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new Panel3();
+                frame.setSize(500, 500);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
+
+        consulta4Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new Panel4();
                 frame.setSize(500, 500);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);

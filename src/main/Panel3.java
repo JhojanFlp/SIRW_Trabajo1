@@ -49,15 +49,33 @@ public class Panel3 extends JFrame {
 
 
         LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"class"});
-        LinkedList<HashMap<String, String>> b = consultaEnTodasLasBD(consultaF, new String[]{"property"});
+        //LinkedList<HashMap<String, String>> b = consultaEnTodasLasBD(consultaF, new String[]{"property"});
 
         for(HashMap r:a){
             this.entityCB.addItem(r.get("class"));
         }
 
-        for(HashMap r:b) {
-            this.featureCB.addItem(r.get("property"));
-        }
+        //for(HashMap r:b) {
+          //  this.featureCB.addItem(r.get("property"));
+        //}
+
+        entityCB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ent = entityCB.getSelectedItem().toString();
+                String consulta = prefijos + "select distinct ?property \n" +
+                        "where {\n" +
+                        "\t?ent a <" + ent + "> .\n" +
+                        "\t?ent ?property ?data . \n" +
+                        "\t?property a owl:DatatypeProperty.\n" +
+                        "}\n";
+                LinkedList<HashMap<String, String>> a = consultaEnTodasLasBD(consulta, new String[]{"property"});
+                featureCB.removeAllItems();
+                for (HashMap r : a) {
+                    featureCB.addItem(r.get("property"));
+                }
+            }
+        });
 
 
         buscarBtn.addActionListener(new ActionListener() {
@@ -107,6 +125,10 @@ public class Panel3 extends JFrame {
             respuesta += Integer.parseInt(String.valueOf(v));
         }
 
+        if(respuesta == 0){
+            resp += "\t*** NO DATA (N/A) *** \n\n";
+        }
+
         resp += "- Conteo = " + String.valueOf(respuesta) + "\n";
 
         // Numérico o String?
@@ -117,14 +139,19 @@ public class Panel3 extends JFrame {
 
         LinkedList<HashMap<String, String>> range = consultaEnTodasLasBD(consulta2, new String[]{"range"});
         String auxRange = "";
+        boolean sw = false;
 
         for(HashMap r:range){
             auxRange = r.get("range").toString();
+            if(auxRange.equals("http://www.w3.org/2001/XMLSchema#string")){
+                sw = true;
+            }
         }
+
 
         this.filtrarCB.removeAllItems();
 
-        if(auxRange.equals("http://www.w3.org/2001/XMLSchema#string")){
+        if(sw){
             // Es string
             String consulta3 = prefijos + "select ?data\n" +
                     "where {\n" +
@@ -181,6 +208,9 @@ public class Panel3 extends JFrame {
             ArrayList minA = new ArrayList();
             ArrayList promA = new ArrayList();
             String max = "", min ="", prom="";
+            System.out.println(c3max);
+            System.out.println(c3min);
+            System.out.println(c3prom);
             for(HashMap r:c3max){
                 maxA.add(Integer.parseInt(r.get("max").toString().substring(0, 4)));
             }
@@ -192,7 +222,17 @@ public class Panel3 extends JFrame {
                 promA.add(Double.parseDouble(r.get("prom").toString().substring(0, index)));
             }
 
-            int mayor = 0, menor = Integer.parseInt(maxA.get(0).toString()), promedio = 0;
+            int menor;
+
+            if(c3min.size() == 0){
+                menor = 0;
+            } else{
+                menor = Integer.parseInt(maxA.get(0).toString());
+            }
+
+            int mayor = 0;
+            double promedio = 0;
+
             for (Object value : maxA) {
                 if (Integer.parseInt(value.toString()) > mayor) {
                     mayor = Integer.parseInt(value.toString());
@@ -206,11 +246,10 @@ public class Panel3 extends JFrame {
             }
 
             for (Object o : promA) {
-                promedio += Double.parseDouble(o.toString());
+                if (Double.parseDouble(o.toString()) > promedio) {
+                    promedio = Double.parseDouble(o.toString());
+                }
             }
-
-            promedio /= promA.size();
-
 
             resp += "- Máximo = " + mayor + "\n" +
                     "- Mínimo = " + menor + "\n" +
@@ -219,6 +258,7 @@ public class Panel3 extends JFrame {
             this.filtrarCB.addItem("mayor que");
             this.filtrarCB.addItem("menor que");
         }
+
 
         this.filtro.setText("");
         return resp;
@@ -261,6 +301,10 @@ public class Panel3 extends JFrame {
         for(HashMap r:c1){
             char v = r.get("conteo").toString().charAt(0);
             respuesta += Integer.parseInt(String.valueOf(v));
+        }
+
+        if(respuesta == 0){
+            resp += "\t*** NO DATA (N/A) *** \n\n";
         }
 
         resp += "- Conteo = " + String.valueOf(respuesta) + "\n";
@@ -321,6 +365,8 @@ public class Panel3 extends JFrame {
             LinkedList<HashMap<String, String>> c3min = consultaEnTodasLasBD(consulta3min, new String[]{"min"});
             LinkedList<HashMap<String, String>> c3prom = consultaEnTodasLasBD(consulta3prom, new String[]{"prom"});
 
+            System.out.println(c3max);
+
             ArrayList maxA = new ArrayList();
             ArrayList minA = new ArrayList();
             ArrayList promA = new ArrayList();
@@ -336,7 +382,16 @@ public class Panel3 extends JFrame {
                 promA.add(Double.parseDouble(r.get("prom").toString().substring(0, index)));
             }
 
-            int mayor = 0, menor = Integer.parseInt(maxA.get(0).toString()), promedio = 0;
+            int menor;
+
+            if(c3min.size() == 0){
+                menor = 0;
+            } else{
+                menor = Integer.parseInt(maxA.get(0).toString());
+            }
+
+            int mayor = 0;
+            double promedio = 0;
             for (Object value : maxA) {
                 if (Integer.parseInt(value.toString()) > mayor) {
                     mayor = Integer.parseInt(value.toString());
@@ -350,17 +405,16 @@ public class Panel3 extends JFrame {
             }
 
             for (Object o : promA) {
-                promedio += Double.parseDouble(o.toString());
+                if (Double.parseDouble(o.toString()) > promedio) {
+                    promedio = Double.parseDouble(o.toString());
+                }
             }
-
-            promedio /= promA.size();
 
             resp += "- Máximo = " + mayor + "\n" +
                     "- Mínimo = " + menor + "\n" +
                     "- Promedio = " + f.format(promedio) + "\n";
 
         }
-
 
         return resp;
     }
